@@ -2,32 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(to top, #09181c, #132644, #1d3b63);
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.1), transparent 20%), 
+              radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1), transparent 20%),
+              radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.05), transparent 20%), 
+              linear-gradient(to top, #09181c, #132644, #1d3b63);
+  background-size: cover;
+  position: relative;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.star {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5);
+  animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+  from {
+      transform: scale(1);
+      opacity: 0.5;
+  }
+  to {
+      transform: scale(1.5);
+      opacity: 1;
   }
 }
